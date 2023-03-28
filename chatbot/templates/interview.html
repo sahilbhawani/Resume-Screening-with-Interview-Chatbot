@@ -1,0 +1,102 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+            <link rel="stylesheet" type="text/css" href="{% static 'css/interview.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+              crossorigin="anonymous">
+
+    </head>
+    <body>
+
+    <section class="vh-100" style="background-color: #f4f5f7;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-6 mb-4 mb-lg-0">
+        <div class="card mb-3" style="border-radius: .5rem;">
+          <div class="row g-0">
+            <div class="col-md-4 gradient-custom text-center text-white"
+              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+              <h5>{{ student.student_name }}</h5>
+              <p>Students</p>
+              <i class="far fa-edit mb-5"></i>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body p-4">
+                <h6>Information</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Email</h6>
+                    <p class="text-muted">{{ student.student_email }}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Phone</h6>
+                    <p class="text-muted">123 456 789</p>
+                  </div>
+                </div>
+                  <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>College</h6>
+                    <p class="text-muted">{{ student.student_college }}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>CGPA</h6>
+                    <p class="text-muted">{{ student.student_cgpa }}</p>
+                  </div>
+                </div>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col mb-3">
+                    <h6>Resume Screening test result <p class="text-muted">{{ student.student_resume_result }}</p></h6>
+                    <h6>Resume Screening test Cosine Similarity <p class="text-muted">{{ student.student_resume_result }}</p></h6>
+                    <h6>Resume Screening test TF <p class="text-muted">{{tfidf }}</p> </h6>
+                    <h6>Resume Screening test BERT <p class="text-muted">{{bert }}</p> </h6>
+                    <h6>Resume Screening test JACARRD <p class="text-muted">{{jac }}</p> </h6>
+                  </div>
+                </div >
+                  <div class="d-flex justify-content-center">
+                    <a href="interview/{{ student.student_email }}" class="btn btn-primary mb-10 w-50  col-md-4 gradient-custom text-center text-white">Proceed to Interview</a>
+                  </div>
+                      <!--
+<div class="d-flex justify-content-start">-->
+<!--                  <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>-->
+<!--                  <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>-->
+<!--                  <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>-->
+<!--                </div>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--    <div class="card mx-auto mt-5 gap-3 " style="width:640px; overflow:hidden">-->
+<!--        <h1 class="text-center">Candidate Details</h1>-->
+<!--        <div class="p-3">-->
+<!--            <h4>Name: {{ student.student_name }}</h4>-->
+<!--            <h4>Email: {{ student.student_email }}</h4>-->
+<!--            <h4>College: {{ student.student_college }}</h4>-->
+<!--            <h4>CGPA: {{ student.student_cgpa }}</h4>-->
+<!--            <h4>Resume Screening test result: {{ student.student_resume_result }}</h4>-->
+<!--            <a href="interview/{{ student.student_email }}" class="btn btn-primary">Proceed to Interview</a>-->
+<!--        </div>-->
+<!--    </div>-->
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags %}
+                <script>alert("{{ message }}")</script> {% endif %}
+        {% endfor %}
+    {% endif %}
+    </body>
+    </html>
+{% endblock content %}
